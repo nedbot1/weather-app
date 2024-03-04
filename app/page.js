@@ -43,13 +43,13 @@ export default function Home() {
     return (
       <div>
         <div className="absolute top-0 left-0 bottom-0 bg-black/90 z-[1]" />
-        {/* <Image
-          src="https://c1.wallpaperflare.com/preview/47/398/567/nature-summer-weather-fluffy.jpg"
+        <Image
+          src="https://wallpapers.com/images/high/weather-scenarios-collage-dbk9c5n23l7e5fgb.webp"
           layout="fill"
           objectFit="cover"
           alt="Nature"
           className="object-cover"
-        ></Image> */}
+        ></Image>
         <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 text-white z-10">
           <form
             onSubmit={fetchWeather}
