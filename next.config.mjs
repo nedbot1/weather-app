@@ -1,20 +1,7 @@
-// /** @type {import ('next').NextConfig} */
-// import { nextConfig, imagesConfig } from './your-config-file';
-
-// const nextConfig = {
-//   reactStrictMode: true,
-// // };
-
-// // const imagesConfig = {
-// //   images: {
-// //       domains: ['images.unsplash.com'],
-// //   },
-// // };
-
-// export { nextConfig as default 
+/** @type {import('next').Nextconfig} */
 const nextConfig = {
-  images: {
-    domains: ["c1.wallpaperflare.com", "openweathermap.org"],
+  images : {
+    domains: ["c1.wallpaperflare.com", "openweathermap.org", 'wallpapers.com'],
   },
 };
 export default nextConfig;
