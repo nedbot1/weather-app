@@ -1,9 +1,9 @@
 "use client";
-import { useState, Ima } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { BsSearch } from "react-icons/bs";
 import Weather from "@/component/weather";
-import spinner from "@/component/spinner";
+import Spinner from "@/component/spinner";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -35,24 +35,21 @@ export default function Home() {
       });
 
     setCity("");
-    setLoading(false);
   };
 
   if (loading) {
-    return <spinner />;
+    return <Spinner />;
   } else {
     return (
-      <>
-        {/* <div className="text-grey-500">hey</div>
-        <button onClick={fetchWeather}>Fetch Data</button> */}
+      <div>
         <div className="absolute top-0 left-0 bottom-0 bg-black/90 z-[1]" />
-        <Image
+        {/* <Image
           src="https://c1.wallpaperflare.com/preview/47/398/567/nature-summer-weather-fluffy.jpg"
           layout="fill"
           objectFit="cover"
           alt="Nature"
           className="object-cover"
-        ></Image>
+        ></Image> */}
         <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 text-white z-10">
           <form
             onSubmit={fetchWeather}
@@ -71,10 +68,8 @@ export default function Home() {
             </button>
           </form>
         </div>
-
-        {/* weather */}
-        {weather.main && <Weather data={weather} />}
-      </>
+        <div>{weather.main ? <Weather data={weather} /> : null}</div>
+      </div>
     );
   }
 }
