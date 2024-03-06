@@ -2,8 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { BsSearch } from "react-icons/bs";
-import Weather from "@/app/component/weather";
-import Spinner from "@/app/component/spinner";
+import Weather from "./component/currentWeather";
+import Spinner from "./component/spinner";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -62,7 +62,7 @@ export default function Home() {
           </form>
         </div>
         {weather.main ? <Weather data={weather} /> : null}
-      </div>
+           </div>
     );
   }
 }
