@@ -2,8 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { BsSearch } from "react-icons/bs";
-import Weather from "@/component/weather";
-import Spinner from "@/component/spinner";
+import Weather from "@/app/component/weather";
+import Spinner from "@/app/component/spinner";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -41,19 +41,12 @@ export default function Home() {
     return <Spinner />;
   } else {
     return (
-      <div>
-        <div className="absolute top-0 left-0 bottom-0 bg-black/90 z-[1]" />
-        <Image
-          src="https://c1.wallpaperflare.com/preview/47/398/567/nature-summer-weather-fluffy.jpg"
-          layout="fill"
-          objectFit="cover"
-          alt="Nature"
-          className="object-cover"
-        ></Image>
-        <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 text-white z-10">
+      <div className="bg-weather bg-cover">
+
+        <div className="flex justify-between items-center max-w-[500px] w-full m-auto pt-4 text-white">
           <form
             onSubmit={fetchWeather}
-            className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl"
+            className="flex justify-between items-center w-medium m-auto p-3 bg-transparent border text-white rounded-2xl dark:md hover:bg-violet-300 "
           >
             <div>
               <input
@@ -68,7 +61,7 @@ export default function Home() {
             </button>
           </form>
         </div>
-        <div>{weather.main ? <Weather data={weather} /> : null}</div>
+        {weather.main ? <Weather data={weather} /> : null}
       </div>
     );
   }

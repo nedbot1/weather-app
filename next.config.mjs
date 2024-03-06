@@ -1,7 +1,7 @@
 /** @type {import('next').Nextconfig} */
 const nextConfig = {
   images : {
-    domains: ["c1.wallpaperflare.com", "openweathermap.org", 'wallpapers.com'],
+    domains: ["images.unsplash.com", "openweathermap.org", "unsplash.com"],
   },
 };
 export default nextConfig;
