@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { BsSearch } from "react-icons/bs";
 import CurrentWeather from "./component/currentWeather";
 import WeatherForecast from "./component/weatherForeCast";
 import Spinner from "./component/spinner";
+import Snake from "./component/snake";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -76,7 +76,7 @@ export default function Home() {
         </form>
       </div>
       {loading ? (
-        <Spinner />
+        <Snake />
       ) : (
         <div>
           {Object.keys(currentWeather).length > 0 && (
