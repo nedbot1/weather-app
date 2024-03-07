@@ -42,7 +42,7 @@ export default function Home() {
       <div>
         <div className="absolute top-0 left-0 bottom-0 bg-black/90 z-[1]" />
         <Image
-          src="https://wallpapers.com/images/high/weather-scenarios-collage-dbk9c5n23l7e5fgb.webp"
+          src="https://w0.peakpx.com/wallpaper/165/140/HD-wallpaper-canyon-wet-stunning-sun-sunset-magic-clouds-beach-evening-morning-wicked-super-desert-black-sky-set-weather-coloured-mountains-deep-dry-violet-rain-canyon-satuation-sand-stone.jpg"
           layout="fill"
           objectFit="cover"
           alt="Nature"
