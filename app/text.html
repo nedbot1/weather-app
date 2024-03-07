@@ -29,20 +29,6 @@
     </script>
   </body>
 </html>
-
-
-weatherForeCast.jsx
-
-
-import React from "react";
-import { IoMdTime } from "react-icons/io";
-
-const WeatherForecast = ({ data }) => {
-  const getWeatherIconUrl = (iconCode) => {
-    return `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
-  };
-
-  return (
     <div>
       <div className="flex ml-10 mb-5">
         <IoMdTime size={22} />
