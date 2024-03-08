@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { BsSearch } from "react-icons/bs";
 import CurrentWeather from "./component/currentWeather";
 import WeatherForecast from "./component/weatherForeCast";
-import Spinner from "./component/spinner";
+import Loader from "./component/loder";
+import Snake from "./component/snake";
+import Apod from "./component/Apod";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -14,7 +15,6 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch current weather when the component mounts
     fetchCurrentWeather();
   }, []);
 
@@ -31,20 +31,25 @@ export default function Home() {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching weather data:", error);
+        //console.error("Error fetching weather data:", error);
         setLoading(false);
       });
   };
 
   const fetchCurrentWeather = () => {
+    if (!city) {
+      //setErrorMessage("Please enter a city");
+      return;
+    }
+
     setLoading(true);
-    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
+    const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
     fetchWeatherData(currentWeatherUrl, setCurrentWeather);
   };
 
   const fetchForecastWeather = () => {
     setLoading(true);
-    const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${process.env.NEXT_PUBLIC_API_KEY}&cnt=7`;
+    const forecastWeatherUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}&cnt=7`;
     fetchWeatherData(forecastWeatherUrl, setForecastWeather);
   };
 
@@ -57,20 +62,11 @@ export default function Home() {
   };
 
   return (
-    <div className="relative">
-      <div className="absolute inset-0">
-        {/* <Image
-          src="https://c1.wallpaperflare.com/preview/47/398/567/nature-summer-weather-fluffy.jpg"
-          layout="fill"
-          objectFit="cover"
-          alt="Nature"
-          className="object-cover"
-        /> */}
-      </div>
-      <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 text-white z-10 mb-4">
+    <div className="bg-image bg-cover min-h-screen items-center justify-between">
+      <div className=" flex justify-between items-center max-w-[500px] w-full md:m-auto pt-4 text-white z-10 mb-4 px-1 ">
         <form
           onSubmit={handleSubmit}
-          className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl"
+          className="flex justify-between items-center w-full m-auto p-3 bg-transparent/30 border border-gray-300 text-white rounded-2xl"
         >
           <input
             className="bg-transparent border-none text-white focus:outline-none text-2xl flex-grow mr-2"
@@ -85,9 +81,9 @@ export default function Home() {
         </form>
       </div>
       {loading ? (
-        <Spinner />
+        <Loader />
       ) : (
-        <div>
+        <>
           {Object.keys(currentWeather).length > 0 && (
             <div>
               <CurrentWeather data={currentWeather} />
@@ -98,7 +94,9 @@ export default function Home() {
               <WeatherForecast data={forecastWeather} />
             </div>
           )}
-        </div>
+          {Object.keys(currentWeather).length > 0 &&
+            Object.keys(forecastWeather).length > 0 && <Apod />}
+        </>
       )}
     </div>
   );

@@ -5,6 +5,7 @@ const nextConfig = {
       "c1.wallpaperflare.com",
       "openweathermap.org",
       "images.unsplash.com",
+      "apod.nasa.gov",
     ],
   },
 };
