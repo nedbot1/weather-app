@@ -6,6 +6,7 @@ const nextConfig = {
       "openweathermap.org",
       "images.unsplash.com",
       "apod.nasa.gov",
+      "ssd.jpl.nasa.gov",
     ],
   },
 };

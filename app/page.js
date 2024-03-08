@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import CurrentWeather from "./component/currentWeather";
 import WeatherForecast from "./component/weatherForeCast";
-import Loader from "./component/loder";
-import Snake from "./component/snake";
+import Loader from "./component/loader";
 import Apod from "./component/Apod";
 
 export default function Home() {
@@ -41,7 +40,6 @@ export default function Home() {
       //setErrorMessage("Please enter a city");
       return;
     }
-
     setLoading(true);
     const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`;
     fetchWeatherData(currentWeatherUrl, setCurrentWeather);
